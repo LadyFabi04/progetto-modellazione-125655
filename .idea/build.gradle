@@ -8,8 +8,8 @@ group = 'it.unicam.cs.mpgc.rpg125655'
 version = '1.0'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
 }
 
 repositories {
@@ -17,7 +17,7 @@ repositories {
 }
 
 javafx {
-    version = '21'
+    version = '25'
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
