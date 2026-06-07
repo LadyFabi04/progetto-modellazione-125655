@@ -1,0 +1,387 @@
+{
+  "id": "chronicles_of_fate",
+  "title": "Chronicles of Fate",
+  "startNodeId": "start",
+  "nodes": [
+    {
+      "id": "start",
+      "title": "Il Richiamo del Destino",
+      "narrativeText": "Il villaggio di Ashenvale brucia. Le fiamme divorano le case di paglia mentre urla disperati si levano nella notte. Tu sei un viaggiatore di passaggio, fermato da questo orrore improvviso. Tra il fumo, una vecchia ti afferra il braccio: 'Sei arrivato proprio in tempo, straniero. La profezia parlava di te.' Prima che tu possa rispondere, tre strade si aprono davanti a te.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Correre verso le fiamme per salvare i civili", "targetNodeId": "village_fire", "requirement": null, "consequence": {"healthDelta": -2, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Chiedere alla vecchia cosa significa la profezia", "targetNodeId": "old_woman", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c3", "text": "Dirigersi verso la torre oscura all'orizzonte", "targetNodeId": "dark_tower_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 0, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "village_fire",
+      "title": "Tra le Fiamme",
+      "narrativeText": "Ti lanci tra le fiamme urlando ai civili di mettersi in salvo. Trascini fuori una famiglia intrappolata, poi un anziano. Il tuo mantello prende fuoco — lo stracci via appena in tempo. Quando l'ultimo abitante è al sicuro, noti qualcosa di strano: al centro del villaggio, tra le braci, brilla un medaglione d'argento.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Recuperare il medaglione tra le braci", "targetNodeId": "take_medallion", "requirement": null, "consequence": {"healthDelta": -3, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Ignorare il medaglione e parlare con i civili salvati", "targetNodeId": "villagers_talk", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "take_medallion",
+      "title": "Il Medaglione d'Argento",
+      "narrativeText": "Afferri il medaglione bruciandoti le dita. È inciso con un simbolo che non hai mai visto — un serpente che divora la propria coda. Appena lo stringi, una visione ti travolge: una città sotterranea, un trono di ossa, una figura incappucciata che ride. Poi tutto svanisce. Uno dei civili si avvicina: 'Quel medaglione apparteneva al nostro signore. È stato ucciso stanotte dagli uomini della torre.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Giurare vendetta e dirigersi verso la torre", "targetNodeId": "dark_tower_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 20, "itemsGiven": ["medallion"], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Tenere il medaglione e cercare la vecchia per capire la visione", "targetNodeId": "old_woman", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": ["medallion"], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "villagers_talk",
+      "title": "La Testimonianza",
+      "narrativeText": "I civili ti raccontano tutto tremando. Uomini in armatura nera sono arrivati all'alba, guidati da un mago con gli occhi bianchi. Cercavano 'il portatore del segno'. Quando il signore del villaggio ha negato di sapere qualcosa, lo hanno ucciso e dato fuoco a tutto. Prima di morire, il signore ha nascosto qualcosa nella fontana del villaggio.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Cercare nella fontana ciò che ha nascosto il signore", "targetNodeId": "fountain_secret", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Seguire le tracce degli uomini in armatura verso la torre", "targetNodeId": "dark_tower_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "fountain_secret",
+      "title": "Il Segreto della Fontana",
+      "narrativeText": "Immergi il braccio nell'acqua fredda della fontana e le dita toccano qualcosa di duro. Tiri fuori una piccola scatola di ferro. Dentro c'è una chiave di bronzo e un frammento di pergamena: 'Chi porta il Segno del Serpente troverà la verità nella cripta sotto la torre. La chiave apre la porta secondaria. Non usare quella principale — è una trappola.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Prendere la chiave e dirigersi alla torre", "targetNodeId": "dark_tower_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": ["bronze_key"], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "old_woman",
+      "title": "La Profezia",
+      "narrativeText": "La vecchia ti trascina in una casa ancora in piedi ai margini del villaggio. Le sue mani sono fredde come pietra. 'La profezia dice: quando la torre nera tocca le stelle e il villaggio brucia per la terza volta, arriverà il Portatore. Quello che può sigillare il Vuoto o aprirlo per sempre.' Ti fissa negli occhi. 'Sei tu. Lo vedo nel tuo sguardo.' Ti consegna una piccola fiala di liquido luminoso. 'Acqua della Fonte Primordiale. Usala nel momento giusto.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Accettare la fiala e il destino", "targetNodeId": "dark_tower_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 20, "itemsGiven": ["primordial_water"], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Rifiutare — non credi nelle profezie", "targetNodeId": "refuse_prophecy", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 0, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "refuse_prophecy",
+      "title": "Il Tuo Cammino",
+      "narrativeText": "Scuoti la testa. 'Non sono nessun portatore. Sono solo un viaggiatore.' La vecchia ti guarda a lungo, poi sorride tristemente. 'Il destino non chiede il permesso.' Mentre esci dalla casa, senti comunque che qualcosa ti spinge verso quella torre. Forse è curiosità. Forse è qualcosa di più.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Andare comunque verso la torre", "targetNodeId": "dark_tower_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "dark_tower_approach",
+      "title": "La Torre Oscura",
+      "narrativeText": "La torre si erge contro il cielo notturno come un dito accusatorio. È costruita in pietra nera che sembra assorbire la luce. Due guardie in armatura scura presidiano il portone principale. Noti però, sul lato sinistro, una porta secondaria quasi nascosta dalla vegetazione. E in alto, una finestra illuminata da cui scende una corda — forse dimenticata da qualcuno.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Affrontare le guardie al portone principale", "targetNodeId": "main_gate_fight", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 0, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Usare la chiave di bronzo sulla porta secondaria", "targetNodeId": "secondary_door", "requirement": {"minStrength": null, "minIntelligence": null, "minAgility": null, "minCharisma": null, "requiredItemId": "bronze_key"}, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c3", "text": "Arrampicarsi sulla corda fino alla finestra", "targetNodeId": "window_climb", "requirement": {"minStrength": null, "minIntelligence": null, "minAgility": 4, "minCharisma": null, "requiredItemId": null}, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c4", "text": "Bussare al portone fingendosi un mercante", "targetNodeId": "disguise_merchant", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "main_gate_fight",
+      "title": "Lo Scontro al Portone",
+      "narrativeText": "Le guardie ti attaccano senza esitazione. Sono forti, ma non invincibili. Dopo uno scontro brutale, riesci ad avere la meglio su entrambe, ma esci malconcio. Mentre spingi il portone, senti un click sospetto sotto i tuoi piedi. Troppo tardi — è una trappola. Un getto di gas ti avvolge. Quando ti risvegli, sei in una cella.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Esaminare la cella per trovare una via d'uscita", "targetNodeId": "prison_cell", "requirement": null, "consequence": {"healthDelta": -10, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "prison_cell",
+      "title": "La Cella",
+      "narrativeText": "La cella è umida e buia. Le sbarre sono di ferro antico ma solido. Attraverso la grata vedi un corridoio sorvegliato da un solo guardiano che sembra mezzo addormentato. Sul pavimento della cella, qualcuno ha inciso delle parole: 'La pietra sinistra cede. Forza è la chiave.' Noti che una pietra del muro a sinistra sembra diversa dalle altre.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Spingere la pietra con tutta la forza", "targetNodeId": "secret_passage", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Cercare di attirare il guardiano e tendere un'imboscata", "targetNodeId": "guard_ambush", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "secret_passage",
+      "title": "Il Passaggio Segreto",
+      "narrativeText": "La pietra cede con un rumore sordo, rivelando un cunicolo stretto. Lo segui carponi per quello che sembra un'eternità, fino a emergere in una stanza piena di armature vuote e vecchie armi. Sei all'interno della torre. In lontananza senti una voce che recita un'incantazione.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Seguire la voce verso l'incantazione", "targetNodeId": "ritual_chamber", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "guard_ambush",
+      "title": "L'Imboscata",
+      "narrativeText": "Fingi di sentirti male, gemendo forte. Il guardiano si avvicina curioso. Quando apre la cella per controllare, lo colpisci di sorpresa. Si addormenta sul pavimento. Prendi le sue chiavi e la sua spada corta. Sei libero, ma devi muoverti in fretta prima che qualcuno noti la sua assenza.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire le scale verso i piani superiori", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "secondary_door",
+      "title": "La Porta Secondaria",
+      "narrativeText": "La chiave di bronzo gira perfettamente nella serratura. La porta si apre su una scala a chiocciola che scende verso il basso. L'aria è fredda e odora di terra bagnata. Scendi per diversi minuti fino a raggiungere una cripta illuminata da torce che bruciano di una luce bluastra. Al centro, un sarcofago di pietra. Sulle pareti, affreschi che raccontano una storia antica.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Esaminare gli affreschi sulle pareti", "targetNodeId": "crypt_frescoes", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Aprire il sarcofago", "targetNodeId": "open_sarcophagus", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "crypt_frescoes",
+      "title": "Gli Affreschi della Cripta",
+      "narrativeText": "Gli affreschi raccontano di un antico stregone che aprì un varco verso il Vuoto — un piano di esistenza fatto di nulla e oblio. Riuscì a sigillarlo a costo della propria vita, usando la sua essenza come chiave. Ma il sigillo si sta indebolendo. L'ultimo affresco mostra una figura — stranamente simile a te — davanti a due porte: una di luce, una di oscurità.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire alla torre dopo aver capito la storia", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 20, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "open_sarcophagus",
+      "title": "Il Sarcofago",
+      "narrativeText": "Spingi il coperchio di pietra. Dentro non c'è un cadavere, ma una spada avvolta in bende nere e una nota: 'Lama del Sigillo — può ferire ciò che non ha corpo. Usala solo quando tutto il resto ha fallito.' La spada vibra leggermente al tuo tocco.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Prendere la Lama del Sigillo e salire", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": ["seal_blade"], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "window_climb",
+      "title": "L'Arrampicata",
+      "narrativeText": "Ti arrampichi agilmente lungo la corda di canapa. Il vento notturno rende tutto più difficile, ma raggiungi la finestra senza essere visto. Entri in una stanza che sembra uno studio: scaffali di libri, mappe appese alle pareti, un tavolo coperto di strani strumenti. Su uno scaffale noti un diario con la copertina di cuoio.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Leggere il diario", "targetNodeId": "read_diary", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Ignorare il diario e uscire dallo studio", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "read_diary",
+      "title": "Il Diario del Mago",
+      "narrativeText": "Il diario appartiene a Malachar, il mago della torre. Nelle ultime pagine scritte con grafia febbricitante leggi: 'Il Vuoto parla attraverso di me ormai. Non sono più sicuro di chi comanda chi. Ho aperto troppo il varco. Se qualcuno legge questo — il sigillo finale si trova nella sala al vertice della torre. Per chiuderlo servono tre elementi: sangue del portatore, luce primordiale, e la volontà di sacrificarsi o la crudeltà di non farlo.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire al vertice della torre con questa conoscenza", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 25, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "disguise_merchant",
+      "title": "Il Travestimento",
+      "narrativeText": "Bussi al portone con decisione. 'Forniture per il maestro Malachar! Consegna urgente!' Una guardia apre uno sportellino e ti fissa con sospetto. 'Il maestro non aspetta forniture.' Ti fissa a lungo. Il momento si allunga pericolosamente.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Insistere con sicurezza mostrando una moneta d'oro", "targetNodeId": "bribe_guard", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Ammettere di essere uno straniero e chiedere udienza", "targetNodeId": "request_audience", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "bribe_guard",
+      "title": "La Corruzione",
+      "narrativeText": "La guardia fissa la moneta d'oro. Poi apre il portone. 'Non vi ho mai visto.' All'interno della torre, un corridoio tortuoso porta verso le scale. Sei dentro.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire le scale", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "request_audience",
+      "title": "L'Udienza Negata",
+      "narrativeText": "La guardia ride. 'Udienza? Il maestro non riceve nessuno.' Poi si fa seria. 'Però mi hai incuriosito. Chi sei davvero?' Prima che tu possa rispondere, si sente un urlo dall'interno della torre e la guardia si gira di scatto. È la tua occasione.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Approfittare della distrazione e sgusciare dentro", "targetNodeId": "tower_stairs", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "tower_stairs",
+      "title": "Le Scale della Torre",
+      "narrativeText": "Sali le scale a spirale. Ad ogni piano senti la pressione aumentare — non fisica, ma mentale. Voci sussurrano cose che non riesci a capire. Al terzo piano trovi una porta socchiusa da cui filtra luce rossa. Al quinto piano, la scala continua verso l'alto verso quella che deve essere la sala al vertice. Senti anche qualcosa muoversi sopra di te.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Entrare nella stanza al terzo piano", "targetNodeId": "red_room", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Continuare a salire verso il vertice", "targetNodeId": "summit_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "red_room",
+      "title": "La Stanza Rossa",
+      "narrativeText": "La stanza è un laboratorio. Al centro, in una gabbia di cristallo, fluttua una creatura — piccola, luminosa, con ali di farfalla. Ti fissa con occhi enormi e intelligenti. 'Liberami,' dice con una voce come tintinnio di campane. 'Sono prigioniera di Malachar da cent'anni. Conosco ogni segreto di questa torre.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Liberare la creatura", "targetNodeId": "free_fairy", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Non fidarti e continuare a salire", "targetNodeId": "summit_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 5, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "free_fairy",
+      "title": "La Fata Liberata",
+      "narrativeText": "Rompi il cristallo con un colpo secco. La creatura esplode in una cascata di luce dorata, poi si materializza sul tuo spalle come un bagliore. 'Grazie, Portatore. Sì, so chi sei. Malachar non è più lui stesso — il Vuoto lo controlla. Al vertice troverai il vero Malachar intrappolato dentro la sua stessa mente. Puoi liberarlo o distruggerlo. Scegli con saggezza.' Ti dona una scaglia dorata. 'Questo ti proteggerà una volta.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire al vertice con la fata come guida", "targetNodeId": "summit_approach", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 20, "itemsGiven": ["golden_scale"], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "ritual_chamber",
+      "title": "La Camera del Rituale",
+      "narrativeText": "La voce viene da una grande sala circolare. Al centro, un cerchio magico brucia di luce viola. Un uomo anziano in vesti nere — Malachar — sta compiendo un rituale, gli occhi completamente bianchi. Attorno a lui, tre apprendisti giacciono immobili sul pavimento. Quando entri, il mago si gira verso di te senza fermare il rituale.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Interrompere il rituale a forza", "targetNodeId": "interrupt_ritual", "requirement": null, "consequence": {"healthDelta": -5, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Cercare di parlare con Malachar", "targetNodeId": "talk_malachar", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c3", "text": "Usare l'acqua primordiale sul cerchio magico", "targetNodeId": "use_water_ritual", "requirement": {"minStrength": null, "minIntelligence": null, "minAgility": null, "minCharisma": null, "requiredItemId": "primordial_water"}, "consequence": {"healthDelta": 0, "xpGain": 30, "itemsGiven": [], "itemsRemoved": ["primordial_water"], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "summit_approach",
+      "title": "Il Vertice si Avvicina",
+      "narrativeText": "Le ultime scale portano a una porta di metallo nero con il simbolo del serpente che divora se stesso — lo stesso del medaglione. L'aria è quasi irrespirabile, carica di energia. Senti il tuo sangue pulsare in modo strano. La porta è aperta di un millimetro.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Spingere la porta ed entrare", "targetNodeId": "summit_chamber", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "interrupt_ritual",
+      "title": "Il Rituale Interrotto",
+      "narrativeText": "Ti lanci sul cerchio magico spezzandolo con la tua spada. Un'esplosione di energia ti scaraventa contro il muro. Quando riesci ad alzarti, Malachar ti fissa. I suoi occhi bianchi lampeggiano. 'Portatore... sei arrivato.' La sua voce è doppia — una umana, una aliena. 'Troppo tardi per fermarmi. Ma forse... non troppo tardi per qualcos'altro.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Combattere Malachar", "targetNodeId": "summit_chamber", "requirement": null, "consequence": {"healthDelta": -8, "xpGain": 20, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "talk_malachar",
+      "title": "La Voce del Vuoto",
+      "narrativeText": "Parli con Malachar, cercando di raggiungere l'uomo sotto il controllo del Vuoto. Per un momento — un solo momento — i suoi occhi tornano normali e ti guarda con terrore. 'Scappa. Non puoi... non devi...' Poi i bianchi tornano. Ma hai capito: c'è ancora qualcuno lì dentro. Forse può essere salvato.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Tentare di salvare Malachar dal Vuoto", "targetNodeId": "save_malachar", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Non rischiare — eliminare Malachar e il Vuoto insieme", "targetNodeId": "summit_chamber", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 10, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "use_water_ritual",
+      "title": "L'Acqua Primordiale",
+      "narrativeText": "Versi l'acqua primordiale sul cerchio. Reagisce come olio sul fuoco — ma al contrario. Le fiamme viola si spengono in uno sfrigolio. Malachar urla — non di dolore, ma di sollievo. Crolla in ginocchio, i suoi occhi che tornano lentamente normali. 'Il... il Vuoto si è ritirato. Per ora. Ma il sigillo al vertice sta cedendo. Dobbiamo salire insieme.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire al vertice con Malachar liberato", "targetNodeId": "summit_with_malachar", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 30, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "save_malachar",
+      "title": "La Lotta per un'Anima",
+      "narrativeText": "Ti avvicini a Malachar ignorando i tuoi istinti di fuga. Posi una mano sulla sua spalla e spingi — non fisicamente, ma con la tua volontà. Senti il Vuoto resistere, freddo e infinito. Poi, lentamente, cedi terreno. Malachar crolla. Quando si rialza, i suoi occhi sono di nuovo umani, pieni di lacrime. 'Non pensavo... grazie. Il vertice. Dobbiamo andare.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Salire al vertice con Malachar", "targetNodeId": "summit_with_malachar", "requirement": null, "consequence": {"healthDelta": -5, "xpGain": 35, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "summit_with_malachar",
+      "title": "Al Vertice — Con un Alleato",
+      "narrativeText": "Sali al vertice con Malachar al tuo fianco. La sala è identica a quella che hai immaginato — un varco aperto verso il nulla, un vortice di oscurità nel soffitto. Malachar ti spiega rapidamente: 'Posso sigillarlo di nuovo, ma il costo è la mia vita. A meno che...' Ti guarda. 'A meno che tu non usi il tuo sangue come chiave. Sopravviverai, ma il sigillo durerà solo cent'anni.'",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Lasciare che Malachar si sacrifichi per un sigillo permanente", "targetNodeId": "ending_malachar_sacrifice", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 40, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Usare il tuo sangue per il sigillo temporaneo", "targetNodeId": "ending_blood_seal", "requirement": null, "consequence": {"healthDelta": -15, "xpGain": 50, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "summit_chamber",
+      "title": "La Sala del Vertice",
+      "narrativeText": "La sala del vertice è dominata da un vortice di oscurità che occupa tutto il soffitto. È il Vuoto — e sta crescendo. Malachar è qui, in piedi davanti ad esso come se lo stesse adorando. Si gira verso di te con un sorriso che non appartiene a nessun essere umano. 'Portatore. Finalmente. Ho aspettato così a lungo.' Nella sala ci sono tre oggetti: un pugnale, un libro aperto, e il vortice stesso.",
+      "isEnding": false,
+      "endingType": null,
+      "choices": [
+        {"id": "c1", "text": "Attaccare Malachar con la Lama del Sigillo", "targetNodeId": "ending_seal_blade", "requirement": {"minStrength": null, "minIntelligence": null, "minAgility": null, "minCharisma": null, "requiredItemId": "seal_blade"}, "consequence": {"healthDelta": -10, "xpGain": 50, "itemsGiven": [], "itemsRemoved": ["seal_blade"], "narrativeOutcome": null}},
+        {"id": "c2", "text": "Gettarsi nel Vuoto per chiuderlo dall'interno", "targetNodeId": "ending_void_sacrifice", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 60, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}},
+        {"id": "c3", "text": "Usare la scaglia dorata della fata", "targetNodeId": "ending_fairy_help", "requirement": {"minStrength": null, "minIntelligence": null, "minAgility": null, "minCharisma": null, "requiredItemId": "golden_scale"}, "consequence": {"healthDelta": 0, "xpGain": 55, "itemsGiven": [], "itemsRemoved": ["golden_scale"], "narrativeOutcome": null}},
+        {"id": "c4", "text": "Cedere al Vuoto — unirsi ad esso", "targetNodeId": "ending_corruption", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 0, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+      ]
+    },
+    {
+      "id": "ending_malachar_sacrifice",
+      "title": "Il Sacrificio del Mago",
+      "narrativeText": "Annuisci in silenzio. Malachar ti stringe la mano. 'È stato un onore conoscerti, Portatore.' Si avvicina al vortice e pronuncia parole antichissime. La sua forma si dissolve in luce bianca che tappa il Vuoto come un sigillo eterno. Il vortice si chiude con un suono come un sospiro. La torre trema. Esci correndo mentre crolla su se stessa. All'alba, in piedi tra le macerie, capisci che il mondo è salvo — per sempre. Ma hai perso qualcuno che meritava di vivere.",
+      "isEnding": true,
+      "endingType": "bittersweet",
+      "choices": []
+    },
+    {
+      "id": "ending_blood_seal",
+      "title": "Il Sigillo di Sangue",
+      "narrativeText": "Ti tagli il palmo e premi la mano sul vortice. Il tuo sangue brucia come fuoco mentre il Vuoto viene sigillato. Malachar ti sorregge mentre cadi in ginocchio. 'Cent'anni,' dice piano. 'Tra cent'anni qualcun altro dovrà fare ciò che hai fatto tu.' Ti alzi lentamente. Il cielo fuori dalla torre sta diventando rosa per l'alba. Hai salvato il mondo — per ora. Ed è abbastanza.",
+      "isEnding": true,
+      "endingType": "good",
+      "choices": []
+    },
+    {
+      "id": "ending_seal_blade",
+      "title": "La Lama che Sigilla",
+      "narrativeText": "Scagli la Lama del Sigillo contro Malachar. La lama lo attraversa — non il corpo, ma il Vuoto dentro di lui. Malachar urla mentre l'oscurità viene strappata via da lui. Crolla a terra, umano di nuovo, mentre la lama vola verso il vortice e lo chiude con un'esplosione di luce. Quando il silenzio torna, Malachar è in ginocchio, piangendo. 'Sono libero,' sussurra. 'Dopo così tanto tempo.' Il sole sorge su un mondo che non sa quanto sia stato vicino alla fine.",
+      "isEnding": true,
+      "endingType": "good",
+      "choices": []
+    },
+    {
+      "id": "ending_void_sacrifice",
+      "title": "Nel Vuoto",
+      "narrativeText": "Ti lanci nel vortice. Per un momento infinito esisti ovunque e da nessuna parte. Poi usi tutta la tua volontà per spingere — verso l'esterno, verso la chiusura. Il Vuoto si chiude attorno a te. Dall'esterno, Malachar vede il vortice chiudersi in un punto di luce, poi scomparire. Non c'è traccia di te. Ma nei villaggi vicini, nei giorni che seguono, le persone giurano di sentire a volte una presenza benevola — come se qualcuno vegliasse su di loro.",
+      "isEnding": true,
+      "endingType": "sacrifice",
+      "choices": []
+    },
+    {
+      "id": "ending_fairy_help",
+      "title": "La Grazia della Fata",
+      "narrativeText": "Estrai la scaglia dorata. Brilla di una luce accecante che fa indietreggiare Malachar. La fata appare — grande come un uomo ora, radiosa. 'Vecchio patto, vecchio debito,' dice al Vuoto. Parole antiche vengono pronunciate. Il vortice si contorce, resiste, poi — si chiude. Malachar crolla, privo di sensi ma vivo. La fata ti sorride. 'Il mio debito è pagato, Portatore. E il tuo — è appena cominciato.' Scompare ridendo.",
+      "isEnding": true,
+      "endingType": "good",
+      "choices": []
+    },
+    {
+      "id": "ending_corruption",
+      "title": "L'Abbraccio del Vuoto",
+      "narrativeText": "Ti avvicini al vortice. Le voci hanno senso adesso. Il Vuoto non è il male — è la fine di tutto il dolore, di tutta la lotta. Ti dissolvi in esso con un sorriso. Malachar ride. Due Portatori ora servono il Vuoto. Il mondo non lo saprà mai — non finché non sarà troppo tardi. Nell'oscurità, qualcosa che una volta era te osserva il mondo e piana.",
+      "isEnding": true,
+      "endingType": "evil",
+      "choices": []
+    }
+  ]
+}
