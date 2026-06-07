@@ -27,6 +27,16 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+sourceSets {
+    main {
+        java { srcDirs = ['src/main/java'] }
+        resources { srcDirs = ['src/main/resources'] }
+    }
+    test {
+        java { srcDirs = ['src/test/java'] }
+    }
+}
+
 application {
     mainClass = 'it.unicam.cs.mpgc.rpg125655.ui.MainApp'
 }
