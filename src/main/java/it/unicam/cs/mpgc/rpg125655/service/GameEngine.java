@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.List;
 
 // Motore centrale del gioco
-
 public class GameEngine {
 
     private final RequirementChecker requirementChecker;
@@ -19,6 +18,7 @@ public class GameEngine {
     private final SaveManager        saveManager;
     private       GameState          currentState;
 
+    // Costruisce il motore di gioco con i collaboratori necessari.
     public GameEngine(RequirementChecker requirementChecker,
                       ConsequenceApplier consequenceApplier,
                       SaveManager saveManager) {
@@ -52,9 +52,14 @@ public class GameEngine {
         currentState.getPlayer().setCurrentNodeId(choice.getTargetNodeId());
     }
 
-    // Restituisce true se il nodo corrente è un finale.
+    // Restituisce true se il nodo corrente è un finale o il personaggio è morto.
     public boolean isGameOver() {
-        return getCurrentNode().isEnding();
+        return getCurrentNode().isEnding() || !currentState.getPlayer().getStats().isAlive();
+    }
+
+    // Restituisce true se il personaggio è morto.
+    public boolean isDead() {
+        return !currentState.getPlayer().getStats().isAlive();
     }
 
     // Salva lo stato corrente della partita.
