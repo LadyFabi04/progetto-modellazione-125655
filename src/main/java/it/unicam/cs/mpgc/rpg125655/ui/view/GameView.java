@@ -124,7 +124,7 @@ public class GameView {
     private Image getImageForNode(String nodeId) {
         String imageName;
         if (nodeId.equals("start") || nodeId.startsWith("village") || nodeId.equals("take_medallion") || nodeId.equals("villagers_talk") || nodeId.equals("fountain_secret") || nodeId.equals("old_woman") || nodeId.equals("refuse_prophecy")) {
-            imageName = "village.jpg";
+            imageName = "burnvillage.jpg";
         } else if (nodeId.equals("dark_tower_approach") || nodeId.equals("main_gate_fight") || nodeId.equals("disguise_merchant") || nodeId.equals("bribe_guard") || nodeId.equals("request_audience") || nodeId.equals("secondary_door") || nodeId.equals("window_climb")) {
             imageName = "tower.jpg";
         } else if (nodeId.equals("tower_stairs") || nodeId.equals("prison_cell") || nodeId.equals("secret_passage") || nodeId.equals("guard_ambush") || nodeId.equals("crypt_frescoes") || nodeId.equals("open_sarcophagus") || nodeId.equals("read_diary")) {
