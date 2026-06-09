@@ -34,7 +34,20 @@ public class JsonSaveManager implements SaveManager {
     public void save(GameState state) throws IOException {
         Files.createDirectories(saveDirectory);
         Path filePath = saveDirectory.resolve(state.getSaveId() + ".json");
-        Files.writeString(filePath, gson.toJson(state));
+        // Salva solo i dati essenziali senza la storia completa
+        SaveData data = new SaveData(
+                state.getSaveId(),
+                state.getPlayer().getName(),
+                state.getPlayer().getCharacterClass().name(),
+                state.getPlayer().getStats().getHealth(),
+                state.getPlayer().getStats().getMaxHealth(),
+                state.getPlayer().getStats().getAgility(),
+                state.getPlayer().getStats().getMagic(),
+                state.getPlayer().getStats().getLevel(),
+                state.getPlayer().getStats().getExperience(),
+                state.getPlayer().getCurrentNodeId()
+        );
+        Files.writeString(filePath, gson.toJson(data));
     }
 
     // Carica un GameState dal file JSON con l'id indicato.
@@ -44,7 +57,8 @@ public class JsonSaveManager implements SaveManager {
         if (!Files.exists(filePath)) {
             throw new FileNotFoundException("File di salvataggio non trovato: " + saveId);
         }
-        return gson.fromJson(Files.readString(filePath), GameState.class);
+        SaveData data = gson.fromJson(Files.readString(filePath), SaveData.class);
+        return data.toGameState();
     }
 
     // Restituisce la lista degli id dei salvataggi disponibili.
@@ -61,5 +75,50 @@ public class JsonSaveManager implements SaveManager {
     @Override
     public void delete(String saveId) throws IOException {
         Files.deleteIfExists(saveDirectory.resolve(saveId + ".json"));
+    }
+
+    private static class SaveData {
+        String saveId;
+        String playerName;
+        String playerClass;
+        int health;
+        int maxHealth;
+        int agility;
+        int magic;
+        int level;
+        int experience;
+        String currentNodeId;
+
+        SaveData(String saveId, String playerName, String playerClass,
+                 int health, int maxHealth, int agility, int magic,
+                 int level, int experience, String currentNodeId) {
+            this.saveId = saveId;
+            this.playerName = playerName;
+            this.playerClass = playerClass;
+            this.health = health;
+            this.maxHealth = maxHealth;
+            this.agility = agility;
+            this.magic = magic;
+            this.level = level;
+            this.experience = experience;
+            this.currentNodeId = currentNodeId;
+        }
+
+        // Converte i dati salvati in un GameState utilizzabile.
+        GameState toGameState() {
+            it.unicam.cs.mpgc.rpg125655.model.character.CharacterClass classe =
+                    it.unicam.cs.mpgc.rpg125655.model.character.CharacterClass.valueOf(playerClass);
+            it.unicam.cs.mpgc.rpg125655.model.character.Character player =
+                    new it.unicam.cs.mpgc.rpg125655.model.character.Character(playerName, classe);
+            player.getStats().setHealth(health);
+            player.getStats().setMaxHealth(maxHealth);
+            player.getStats().setAgility(agility);
+            player.getStats().setMagic(magic);
+            player.getStats().setLevel(level);
+            player.getStats().setExperience(experience);
+            player.setCurrentNodeId(currentNodeId);
+            return new it.unicam.cs.mpgc.rpg125655.model.GameState(saveId, player, null,
+                    java.time.LocalDateTime.now());
+        }
     }
 }

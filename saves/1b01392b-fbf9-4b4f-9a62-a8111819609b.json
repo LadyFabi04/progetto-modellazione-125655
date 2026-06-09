@@ -1,0 +1,12 @@
+{
+  "saveId": "1b01392b-fbf9-4b4f-9a62-a8111819609b",
+  "playerName": "Eroe",
+  "playerClass": "WARRIOR",
+  "health": 8,
+  "maxHealth": 10,
+  "agility": 3,
+  "magic": 1,
+  "level": 1,
+  "experience": 0,
+  "currentNodeId": "secondary_door"
+}

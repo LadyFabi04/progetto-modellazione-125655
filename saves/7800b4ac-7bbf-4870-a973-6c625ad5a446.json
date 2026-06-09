@@ -1,0 +1,12 @@
+{
+  "saveId": "7800b4ac-7bbf-4870-a973-6c625ad5a446",
+  "playerName": "Eroe",
+  "playerClass": "WARRIOR",
+  "health": 8,
+  "maxHealth": 10,
+  "agility": 3,
+  "magic": 1,
+  "level": 1,
+  "experience": 0,
+  "currentNodeId": "dark_tower_approach"
+}

@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg125655.ui.view;
 
+import it.unicam.cs.mpgc.rpg125655.model.GameState;
 import it.unicam.cs.mpgc.rpg125655.model.character.Character;
 import it.unicam.cs.mpgc.rpg125655.model.item.Item;
 import it.unicam.cs.mpgc.rpg125655.model.story.Choice;
@@ -12,6 +13,7 @@ import it.unicam.cs.mpgc.rpg125655.service.RequirementChecker;
 import it.unicam.cs.mpgc.rpg125655.ui.SceneManager;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
@@ -33,22 +35,22 @@ public class GameView {
     private final GameEngine engine;
 
     // Area dove vengono mostrate le scelte.
-    private final VBox areaScelte;
+    private VBox areaScelte;
 
     // Testo narrativo del nodo corrente.
-    private final Text testoNarrativo;
+    private Text testoNarrativo;
 
     // Barra della salute.
-    private final ProgressBar barraSalute;
+    private ProgressBar barraSalute;
 
     // Etichetta statistiche.
-    private final Text labelStats;
+    private Text labelStats;
 
     // Etichetta inventario.
-    private final Text labelInventario;
+    private Text labelInventario;
 
     // Immagine contestuale della scena.
-    private final ImageView immagineScena;
+    private ImageView immagineScena;
 
     // Riferimento al personaggio.
     private final Character personaggio;
@@ -56,18 +58,34 @@ public class GameView {
     // Costruisce la schermata di gioco con il personaggio e la storia forniti.
     public GameView(Character personaggio, Story storia) {
         this.personaggio = personaggio;
-
         RequirementChecker checker = new RequirementChecker();
         ConsequenceApplier applier = new ConsequenceApplier();
         JsonSaveManager saveManager = new JsonSaveManager();
         engine = new GameEngine(checker, applier, saveManager);
         engine.startNewGame(personaggio, storia);
+        root = buildUI();
+        aggiornaPagina();
+    }
 
-        root = new VBox(15);
-        root.getStyleClass().add("root");
-        root.setPadding(new Insets(30));
+    // Costruisce la schermata di gioco da uno stato salvato.
+    public GameView(GameState stato, Story storia) {
+        this.personaggio = stato.getPlayer();
+        RequirementChecker checker = new RequirementChecker();
+        ConsequenceApplier applier = new ConsequenceApplier();
+        JsonSaveManager saveManager = new JsonSaveManager();
+        engine = new GameEngine(checker, applier, saveManager);
+        engine.startNewGame(personaggio, storia);
+        personaggio.setCurrentNodeId(stato.getPlayer().getCurrentNodeId());
+        root = buildUI();
+        aggiornaPagina();
+    }
 
-        // Barra statistiche in cima
+    // Costruisce l'interfaccia grafica comune ai due costruttori.
+    private VBox buildUI() {
+        VBox layout = new VBox(15);
+        layout.getStyleClass().add("root");
+        layout.setPadding(new Insets(30));
+
         barraSalute = new ProgressBar(1.0);
         barraSalute.getStyleClass().add("health-bar");
         barraSalute.setPrefWidth(150);
@@ -78,16 +96,17 @@ public class GameView {
         labelInventario = new Text();
         labelInventario.getStyleClass().add("stats-label");
 
+        Button btnSalva = new Button("💾 Salva");
+        btnSalva.getStyleClass().add("btn-secondary");
+        btnSalva.setOnAction(e -> salvaPartita());
+
         HBox statsBox = new HBox(20);
         statsBox.getStyleClass().add("stats-bar");
         statsBox.setAlignment(Pos.CENTER_LEFT);
-
         Text labelSalute = new Text("❤ ");
         labelSalute.getStyleClass().add("stats-label");
+        statsBox.getChildren().addAll(labelSalute, barraSalute, labelStats, labelInventario, btnSalva);
 
-        statsBox.getChildren().addAll(labelSalute, barraSalute, labelStats, labelInventario);
-
-        // Contenuto principale: immagine + testo
         immagineScena = new ImageView();
         immagineScena.setFitWidth(280);
         immagineScena.setFitHeight(200);
@@ -111,13 +130,25 @@ public class GameView {
         contenuto.setAlignment(Pos.TOP_LEFT);
         contenuto.getChildren().addAll(immagineScena, scroll);
 
-        // Area scelte
         areaScelte = new VBox(8);
         areaScelte.setAlignment(Pos.CENTER_LEFT);
 
-        root.getChildren().addAll(statsBox, contenuto, areaScelte);
+        layout.getChildren().addAll(statsBox, contenuto, areaScelte);
+        return layout;
+    }
 
-        aggiornaPagina();
+    // Salva la partita corrente.
+    private void salvaPartita() {
+        try {
+            engine.saveGame();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Salvataggio");
+            alert.setHeaderText(null);
+            alert.setContentText("Partita salvata!");
+            alert.showAndWait();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     // Restituisce l'immagine corrispondente al nodo corrente.
@@ -147,11 +178,9 @@ public class GameView {
         StoryNode nodo = engine.getCurrentNode();
         testoNarrativo.setText(nodo.getNarrativeText());
 
-        // Aggiorna immagine
         Image img = getImageForNode(nodo.getId());
         if (img != null) immagineScena.setImage(img);
 
-        // Aggiorna statistiche
         int salute = personaggio.getStats().getHealth();
         int maxSalute = personaggio.getStats().getMaxHealth();
         int agilita = personaggio.getStats().getAgility();
@@ -159,7 +188,6 @@ public class GameView {
         barraSalute.setProgress((double) salute / maxSalute);
         labelStats.setText(salute + "/" + maxSalute + " HP  ⚡ " + agilita + " AGI  ⚔ Lv." + livello);
 
-        // Aggiorna inventario
         List<Item> inventario = personaggio.getInventory();
         if (inventario.isEmpty()) {
             labelInventario.setText("  🎒 Inventario vuoto");
@@ -199,7 +227,12 @@ public class GameView {
             testoFinale.getStyleClass().add("subtitle");
             Button btnMenu = new Button("Torna al Menu");
             btnMenu.getStyleClass().add("btn-primary");
-            btnMenu.setOnAction(e -> SceneManager.showMainMenu());
+            btnMenu.setOnAction(e -> {
+                try {
+                    new JsonSaveManager().delete(engine.getCurrentState().getSaveId());
+                } catch (Exception ex) { ex.printStackTrace(); }
+                SceneManager.showMainMenu();
+            });
             areaScelte.getChildren().addAll(labelFinale, testoFinale, btnMenu);
             return;
         }
@@ -242,7 +275,12 @@ public class GameView {
         testoFinale.getStyleClass().add("subtitle");
         Button btnMenu = new Button("Torna al Menu");
         btnMenu.getStyleClass().add("btn-primary");
-        btnMenu.setOnAction(e -> SceneManager.showMainMenu());
+        btnMenu.setOnAction(e -> {
+            try {
+                new JsonSaveManager().delete(engine.getCurrentState().getSaveId());
+            } catch (Exception ex) { ex.printStackTrace(); }
+            SceneManager.showMainMenu();
+        });
         areaScelte.getChildren().addAll(labelFinale, testoFinale, btnMenu);
     }
 
