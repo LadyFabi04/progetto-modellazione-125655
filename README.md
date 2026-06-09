@@ -7,11 +7,11 @@ Chronicles of Fate è un gioco di ruolo narrativo testuale sviluppato in Java co
 ### Prerequisiti
 - Java 25
 - Gradle
-- 
+
 ### Istruzioni
 
 ```bash
-git clone 
+git clone https://github.com/LadyFabi04/progetto-modellazione-125655.git
 cd progetto-modellazione-125655
 ```
 
