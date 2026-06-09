@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg125655.ui.view;
 
 import it.unicam.cs.mpgc.rpg125655.model.character.Character;
+import it.unicam.cs.mpgc.rpg125655.model.item.Item;
 import it.unicam.cs.mpgc.rpg125655.model.story.Choice;
 import it.unicam.cs.mpgc.rpg125655.model.story.Story;
 import it.unicam.cs.mpgc.rpg125655.model.story.StoryNode;
@@ -22,6 +23,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 // Schermata principale di gioco: mostra il testo narrativo e le scelte disponibili.
 public class GameView {
@@ -41,6 +43,9 @@ public class GameView {
 
     // Etichetta statistiche.
     private final Text labelStats;
+
+    // Etichetta inventario.
+    private final Text labelInventario;
 
     // Immagine contestuale della scena.
     private final ImageView immagineScena;
@@ -65,17 +70,22 @@ public class GameView {
         // Barra statistiche in cima
         barraSalute = new ProgressBar(1.0);
         barraSalute.getStyleClass().add("health-bar");
-        barraSalute.setPrefWidth(200);
+        barraSalute.setPrefWidth(150);
 
         labelStats = new Text();
         labelStats.getStyleClass().add("stats-label");
 
-        HBox statsBox = new HBox(15);
+        labelInventario = new Text();
+        labelInventario.getStyleClass().add("stats-label");
+
+        HBox statsBox = new HBox(20);
         statsBox.getStyleClass().add("stats-bar");
         statsBox.setAlignment(Pos.CENTER_LEFT);
-        Text labelSalute = new Text("❤ Salute: ");
+
+        Text labelSalute = new Text("❤ ");
         labelSalute.getStyleClass().add("stats-label");
-        statsBox.getChildren().addAll(labelSalute, barraSalute, labelStats);
+
+        statsBox.getChildren().addAll(labelSalute, barraSalute, labelStats, labelInventario);
 
         // Contenuto principale: immagine + testo
         immagineScena = new ImageView();
@@ -144,9 +154,21 @@ public class GameView {
         // Aggiorna statistiche
         int salute = personaggio.getStats().getHealth();
         int maxSalute = personaggio.getStats().getMaxHealth();
+        int agilita = personaggio.getStats().getAgility();
         int livello = personaggio.getStats().getLevel();
         barraSalute.setProgress((double) salute / maxSalute);
-        labelStats.setText(salute + "/" + maxSalute + "  ⚔ Lv." + livello);
+        labelStats.setText(salute + "/" + maxSalute + " HP  ⚡ " + agilita + " AGI  ⚔ Lv." + livello);
+
+        // Aggiorna inventario
+        List<Item> inventario = personaggio.getInventory();
+        if (inventario.isEmpty()) {
+            labelInventario.setText("  🎒 Inventario vuoto");
+        } else {
+            String oggetti = inventario.stream()
+                    .map(Item::getId)
+                    .collect(Collectors.joining(", "));
+            labelInventario.setText("  🎒 " + oggetti);
+        }
 
         areaScelte.getChildren().clear();
 

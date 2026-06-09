@@ -105,7 +105,7 @@
     {
       "id": "prison_cell",
       "title": "La Cella",
-      "narrativeText": "La cella è umida e buia. Le sbarre sono di ferro antico ma solido. Attraverso la grata vedi un corridoio sorvegliato da un solo guardiano che sembra mezzo addormentato. Sul pavimento della cella, qualcuno ha inciso delle parole: 'La pietra sinistra cede. Forza è la chiave.' Noti che una pietra del muro a sinistra sembra diversa dalle altre.",
+      "narrativeText": "La cella è umida e buia. Le sbarre sono di ferro antico ma solido. Attraverso la grata vedi un corridoio sorvegliato da un solo guardiano che sembra mezzo addormentato. Sul pavimento della cella, qualcuno ha inciso delle parole: 'La pietra a sinistra cede. La forza è la chiave.' Noti che una pietra del muro a sinistra sembra diversa dalle altre.",
       "isEnding": false,
       "endingType": null,
       "choices": [
@@ -116,11 +116,11 @@
     {
       "id": "secret_passage",
       "title": "Il Passaggio Segreto",
-      "narrativeText": "La pietra cede con un rumore sordo, rivelando un cunicolo stretto. Lo segui carponi per quello che sembra un'eternità, fino a emergere in una stanza piena di armature vuote e vecchie armi. Sei all'interno della torre. In lontananza senti una voce che recita un'incantazione.",
+      "narrativeText": "La pietra cede con un rumore sordo, rivelando un cunicolo stretto. Lo segui carponi per quello che sembra un'eternità, fino a emergere in una stanza piena di armature vuote e vecchie armi. Sei all'interno della torre. In lontananza senti una voce che recita un'incantesimo.",
       "isEnding": false,
       "endingType": null,
       "choices": [
-        {"id": "c1", "text": "Seguire la voce verso l'incantazione", "targetNodeId": "ritual_chamber", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
+        {"id": "c1", "text": "Seguire la voce verso l'incantesimo", "targetNodeId": "ritual_chamber", "requirement": null, "consequence": {"healthDelta": 0, "xpGain": 15, "itemsGiven": [], "itemsRemoved": [], "narrativeOutcome": null}}
       ]
     },
     {
@@ -136,7 +136,7 @@
     {
       "id": "secondary_door",
       "title": "La Porta Secondaria",
-      "narrativeText": "La chiave di bronzo gira perfettamente nella serratura. La porta si apre su una scala a chiocciola che scende verso il basso. L'aria è fredda e odora di terra bagnata. Scendi per diversi minuti fino a raggiungere una cripta illuminata da torce che bruciano di una luce bluastra. Al centro, un sarcofago di pietra. Sulle pareti, affreschi che raccontano una storia antica.",
+      "narrativeText": "La chiave di bronzo gira perfettamente nella serratura. La porta si apre su una scala a chiocciola che scende verso il basso. L'aria è fredda e odora di terra bagnata. Scendi per diversi minuti fino a raggiungere una cripta illuminata da torce che bruciano di una luce bluastra. Al centro trovi un sarcofago di pietra e sulle pareti, affreschi che raccontano una storia antica.",
       "isEnding": false,
       "endingType": null,
       "choices": [
@@ -378,7 +378,7 @@
     {
       "id": "ending_corruption",
       "title": "L'Abbraccio del Vuoto",
-      "narrativeText": "Ti avvicini al vortice. Le voci hanno senso adesso. Il Vuoto non è il male — è la fine di tutto il dolore, di tutta la lotta. Ti dissolvi in esso con un sorriso. Malachar ride. Due Portatori ora servono il Vuoto. Il mondo non lo saprà mai — non finché non sarà troppo tardi. Nell'oscurità, qualcosa che una volta era te osserva il mondo e piana.",
+      "narrativeText": "Ti avvicini al vortice. Le voci hanno senso adesso. Il Vuoto non è il male — è la fine di tutto il dolore, di tutta la lotta. Ti dissolvi in esso con un sorriso. Malachar ride. Due Portatori ora servono il Vuoto. Il mondo non lo saprà mai — non finché non sarà troppo tardi. Nell'oscurità, qualcosa che una volta era te osserva il mondo e piange.",
       "isEnding": true,
       "endingType": "evil",
       "choices": []
